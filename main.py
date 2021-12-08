@@ -15,23 +15,23 @@ app.config['SECRET_KEY'] = '8BYkEfBA6O6donzWlSihBXox7C0sKR6b'
 ckeditor = CKEditor(app)
 Bootstrap(app)
 
-##CONNECT TO DB
+# CONNECT TO DB
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///blog.db'
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 db = SQLAlchemy(app)
 
-##Login Manager
+# Login Manager
 login_manager = LoginManager()
 login_manager.init_app(app)
 
 
-##Login Manager loader
+# Login Manager loader
 @login_manager.user_loader
 def load_user(user_id):
     return User.query.get(user_id)
 
 
-## ADMIN ONLY DECORATOR
+# ADMIN ONLY DECORATOR
 def admin_only(f):
     @wraps(f)
     def decorated_function(*args, **kwargs):
@@ -44,7 +44,7 @@ def admin_only(f):
     return decorated_function
 
 
-##CONFIGURE DB TABLES
+# CONFIGURE DB TABLES
 class User(UserMixin, db.Model):
     __tablename__ = "users"
     id = db.Column(db.Integer, primary_key=True)
@@ -81,7 +81,7 @@ class Comment(db.Model):
 db.create_all()
 
 
-## CODE
+# CODE
 @app.route('/')
 def get_all_posts():
     posts = BlogPost.query.all()
@@ -236,17 +236,15 @@ if __name__ == "__main__":
 
 # https://www.udemy.com/course/100-days-of-code/learn/lecture/22903058#overview
 
-'''
-INSERT INTO "main"."users" ("id", "email", "password", "name") VALUES ('1', 'aditya@gmail.com', 'pbkdf2:sha256:260000$kJa5ktU5$e75eea2104595d1a2d31ded913e421026cfa0c7c7f3a4bf2adde94dcc9481614', 'aditya');
-INSERT INTO "main"."users" ("id", "email", "password", "name") VALUES ('2', 'aaaa@gmail.com', 'pbkdf2:sha256:260000$VJPH4738$206a84facf5c329f135ffb6bf5a8ffdb26e9aeb3338d7f7688871790db273cd4', 'aaaa');
-'''
 
-'''
-INSERT INTO "main"."blog_posts" ("id", "author_id", "title", "subtitle", "date", "body", "img_url") VALUES ('2', '1', 'The Life of Cactus', 'Who knew that cacti lived such interesting lives.', 'December 05, 2021', '<pre>
-&lt;p&gt;Nori grape silver beet broccoli kombu beet greens fava bean potato quandong celery.&lt;/p&gt;
+# INSERT INTO "main"."users" ("id", "email", "password", "name") VALUES ('1', 'aditya@gmail.com', 'pbkdf2:sha256:260000$kJa5ktU5$e75eea2104595d1a2d31ded913e421026cfa0c7c7f3a4bf2adde94dcc9481614', 'aditya');
+# INSERT INTO "main"."users" ("id", "email", "password", "name") VALUES ('2', 'aaaa@gmail.com', 'pbkdf2:sha256:260000$VJPH4738$206a84facf5c329f135ffb6bf5a8ffdb26e9aeb3338d7f7688871790db273cd4', 'aaaa');
 
-&lt;p&gt;Bunya nuts black-eyed pea prairie turnip leek lentil turnip greens parsnip.&lt;/p&gt;
 
-&lt;p&gt;Sea lettuce lettuce water chestnut eggplant winter purslane fennel azuki bean earthnut pea sierra leone bologi leek soko chicory celtuce parsley j&amp;iacute;cama salsify.&lt;/p&gt;</pre>
-', 'https://images.unsplash.com/photo-1530482054429-cc491f61333b?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1651&q=80');
-'''
+# INSERT INTO "main"."blog_posts" ("id", "author_id", "title", "subtitle", "date", "body", "img_url") VALUES ('2', '1', 'The Life of Cactus', 'Who knew that cacti lived such interesting lives.', 'December 05, 2021', '<pre>
+# &lt;p&gt;Nori grape silver beet broccoli kombu beet greens fava bean potato quandong celery.&lt;/p&gt;
+
+# &lt;p&gt;Bunya nuts black-eyed pea prairie turnip leek lentil turnip greens parsnip.&lt;/p&gt;
+
+# &lt;p&gt;Sea lettuce lettuce water chestnut eggplant winter purslane fennel azuki bean earthnut pea sierra leone bologi leek soko chicory celtuce parsley j&amp;iacute;cama salsify.&lt;/p&gt;</pre>
+# ', 'https://images.unsplash.com/photo-1530482054429-cc491f61333b?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1651&q=80');
