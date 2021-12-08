@@ -236,18 +236,3 @@ def delete_post(post_id):
 
 if __name__ == "__main__":
     app.run(debug=True)
-
-# https://www.udemy.com/course/100-days-of-code/learn/lecture/22903058#overview
-
-
-# INSERT INTO "main"."users" ("id", "email", "password", "name") VALUES ('1', 'aditya@gmail.com', 'pbkdf2:sha256:260000$kJa5ktU5$e75eea2104595d1a2d31ded913e421026cfa0c7c7f3a4bf2adde94dcc9481614', 'aditya');
-# INSERT INTO "main"."users" ("id", "email", "password", "name") VALUES ('2', 'aaaa@gmail.com', 'pbkdf2:sha256:260000$VJPH4738$206a84facf5c329f135ffb6bf5a8ffdb26e9aeb3338d7f7688871790db273cd4', 'aaaa');
-
-
-# INSERT INTO "main"."blog_posts" ("id", "author_id", "title", "subtitle", "date", "body", "img_url") VALUES ('2', '1', 'The Life of Cactus', 'Who knew that cacti lived such interesting lives.', 'December 05, 2021', '<pre>
-# &lt;p&gt;Nori grape silver beet broccoli kombu beet greens fava bean potato quandong celery.&lt;/p&gt;
-
-# &lt;p&gt;Bunya nuts black-eyed pea prairie turnip leek lentil turnip greens parsnip.&lt;/p&gt;
-
-# &lt;p&gt;Sea lettuce lettuce water chestnut eggplant winter purslane fennel azuki bean earthnut pea sierra leone bologi leek soko chicory celtuce parsley j&amp;iacute;cama salsify.&lt;/p&gt;</pre>
-# ', 'https://images.unsplash.com/photo-1530482054429-cc491f61333b?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1651&q=80');
